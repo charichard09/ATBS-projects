@@ -1,0 +1,13 @@
+*.txt
+.vscode/
+__pycache__/
+automateTheBoringStuff/
+pastWeeklyCaloricIntake/
+previous versions/
+*.json
+*.bak
+*.dat
+*.dir
+randomQuizGenerator/
+beautifulSoupTest/*.json
+.vscode/settings.json
