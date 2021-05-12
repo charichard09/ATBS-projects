@@ -10,3 +10,4 @@ previous versions/
 *.dir
 randomQuizGenerator/
 beautifulSoupTest/*.json
+.vscode/settings.json
