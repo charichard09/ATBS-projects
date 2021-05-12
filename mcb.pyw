@@ -17,7 +17,7 @@ elif len(sys.argv) == 2:
     #TODO: List keywords or load content.
     if sys.argv[1].lower() == "list":
         pyperclip.copy(str(list(mcbShelf.keys())))
-    elif sys.argv[1].lower() in mcbShelf:
+    elif sys.argv[1] in mcbShelf:
         pyperclip.copy(mcbShelf[sys.argv[1]])
 
 mcbShelf.close()
