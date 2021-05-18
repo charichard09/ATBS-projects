@@ -3,11 +3,35 @@
 
 def create_Flash_Cards():
     #TODO: Create new flashcard function
-    print("place holder")
+    chapt_topic = input("What chapter or topic will we be adding these flash cards to?\n")
+
+    #Either create heading "Questions on X" or find end of "Questions on X" to append more questions:answer flash cards
+    while True:
+        question = input("\nWhat is the question:\n")
+        answer = input("\nWhat is the answer:\n")
+
+        #open flashCards.txt and write "question:answer" underneath "Questions on X"
+
+        yes_no = input("Would you like to add another Question/Answer?\n")
+        if yes_no == "yes":
+            continue
+        if yes_no == "no":
+            break
+
+    
 
 def review_Flash_Cards():
     #TODO: Create script to extract old flash cards and test.
-    print("place holder")
+    chapter = input("""What chapter would you like to be quizzed on?
+    
+    Please type "Questions on (CH.1 - CH.X, HTML, General).\n\n""")
+
+    #create regular expression "Questions on CH.X and everything underneath until stopping at Questions on" 
+
+    #search for CH.X in file and read lines stopping at "Questions on" which marks beginning of next topic
+
+    #IDEA: Can do dictionary[question] = answer to add read questions:answer's from file. 
+    #Then iterate through dictionary.keys() and dictionary[i] where i is "i in dictionary.keys():"
 
 while True:
     answer = input("""What would you like to do?
