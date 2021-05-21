@@ -1,11 +1,29 @@
 #Script that can either create new flash cards, or review previous flash cards.
 #Date: 05-11-2021 
 
+#TODO: Load flashCards.txt into both dictionaries
+
+flash_cards_dict = {}
+topic_dict = {}
+
+flash_cards_fo = open("flashCards text.txt", r)
+
+flash_cards_read = flash_cards_fo.read()
+
+flash_cards_fo.close()
+
+#Idea: Create regex "Questions\son\s.*Questions, re.DOTALL" to pull entire header and body
+#Idea: Is it possible to use string.split(':') method to return list of body seperated by questions and answers
+
+
+#TODO: Create new flashcard function
 def create_Flash_Cards():
-    #TODO: Create new flashcard function
+    
     chapt_topic = input("What chapter or topic will we be adding these flash cards to?\n")
 
-    #Either create heading "Questions on X" or find end of "Questions on X" to append more questions:answer flash cards
+    #Either create heading "Questions on X" or find end of "Questions on X" to append more {"questions": "answer"} flash cards
+    topic_dict.setdefault(chapt_topic, "")
+
     while True:
         question = input("\nWhat is the question:\n")
         answer = input("\nWhat is the answer:\n")
@@ -19,9 +37,8 @@ def create_Flash_Cards():
             break
 
     
-
+#TODO: Create script to extract old flash cards and test.
 def review_Flash_Cards():
-    #TODO: Create script to extract old flash cards and test.
     chapter = input("""What chapter would you like to be quizzed on?
     
     Please type "Questions on (CH.1 - CH.X, HTML, General).\n\n""")
