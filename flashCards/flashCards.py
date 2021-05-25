@@ -6,7 +6,7 @@
 flash_cards_dict = {}
 topic_dict = {}
 
-flash_cards_fo = open("flashCards text.txt", r)
+flash_cards_fo = open("flashCards text.txt", 'r')
 
 flash_cards_read = flash_cards_fo.read()
 
