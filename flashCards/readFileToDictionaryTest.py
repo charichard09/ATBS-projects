@@ -1,7 +1,7 @@
 #Write program to find out what happens when you "file_object.read()" a file already containing quotes ("")
 #i.e. what happens when reading flashCards test.txt
 
-import sys, os
+import sys, os, re
 
 #os.path.dirname(sys.argv[0]) will return a string of readFileToDictionaryTest.py's directory path, which we assume read_to_dict.txt is also in
 read_to_dict_fo = open(os.path.dirname(sys.argv[0]) + "/read_to_dict.txt", 'r')
@@ -12,7 +12,14 @@ read_to_dict_fo.close()
 
 print(read_to_dict_text)
 
+#TODO: Create a regular expression to look for all current "Questions on x" and print to screen followed by asking user input of what they'd
+#      like to be quizzed on from the options given.
+available_quest_regex = re.compile(r"Questions\son\s.*")
+available_quest_mo = available_quest_regex.findall(read_to_dict_text)
+print('\n'.join(available_quest_mo))
+
 #TODO: Create a regular expression to isolate text inbetween string "Questions on {topic}" and "Questions on {following topic}"
+#quest_ans_regex = re.compile(r"", re.DOTALL)
 
 questions_answers = read_to_dict_text.split('\n')
 
