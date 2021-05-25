@@ -12,6 +12,8 @@ read_to_dict_fo.close()
 
 print(read_to_dict_text)
 
+#TODO: Create a regular expression to isolate text inbetween string "Questions on {topic}" and "Questions on {following topic}"
+
 questions_answers = read_to_dict_text.split('\n')
 
 quest_ans_dict = {}
@@ -21,7 +23,10 @@ for i in range(len(questions_answers)):
         temp_dict = questions_answers[i].split(':')
         quest_ans_dict[temp_dict[0]] = temp_dict[1]
 
-#TODO: Ask a random question from quest_ans_dict (random key), let user input their answer, then print the answer (value) of question (key)
+#Ask a random question from quest_ans_dict (random key), let user input their answer, then print the answer (value) of question (key)
 for j in range(len(quest_ans_dict)):
     user_answer = input(list(quest_ans_dict.keys())[j] + "\n\n")
     print('\n' + quest_ans_dict[list(quest_ans_dict.keys())[j]] + '\n')
+
+#Exit prompt to user
+print("That's all the questions. Great job!")
