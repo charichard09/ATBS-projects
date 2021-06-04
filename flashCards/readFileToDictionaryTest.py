@@ -10,9 +10,8 @@ read_to_dict_text = read_to_dict_fo.read()
 
 read_to_dict_fo.close()
 
-print(read_to_dict_text)
-
 #Create a regular expression to look for all current "Questions on x" and print to screen. 
+print("Current Glossary of Available Questions:")
 available_questions_regex = re.compile(r"Questions\son\s.*")
 available_questions_mo = available_questions_regex.findall(read_to_dict_text)
 print('\n'.join(available_questions_mo))
@@ -23,28 +22,30 @@ while True:
     if "Questions on " + user_topic in read_to_dict_text:
         break
 
-#TODO: Create a regular expression to isolate text inbetween string "Questions on {topic}" and "Questions on {following topic}"
+#Create a regular expression to isolate text inbetween string "Questions on {topic}" and "Questions on {following topic}"
 quest_ans_regex = re.compile(r"Questions\son\s" + user_topic + r".*Questions\son\s", re.DOTALL)
 quest_ans_mo = quest_ans_regex.search(read_to_dict_text)
 print(quest_ans_mo.group())
 
 #TODO: Assign all !Q. to a dictionary as keys with respective !A. as values
+questions_regex = re.compile(r"!Q\.\s.*")
+answers_regex = re.compile(r"!A\.\s.*")
 
+questions_match = questions_regex.findall(quest_ans_mo.group())
+answers_match = answers_regex.findall(quest_ans_mo.group())
 
+print(questions_match)
+print(answers_match)
 
-#questions_answers = read_to_dict_text.split('\n')
+quest_ans_dict = {}
 
-#quest_ans_dict = {}
-
-#for i in range(len(questions_answers)):
-#    if ':' in questions_answers[i]:
-#        temp_dict = questions_answers[i].split(':')
-#        quest_ans_dict[temp_dict[0]] = temp_dict[1]
+for i in range(len(questions_match)):
+    quest_ans_dict[questions_match[i]] = answers_match[i]
 
 #Ask a random question from quest_ans_dict (random key), let user input their answer, then print the answer (value) of question (key)
-#for j in range(len(quest_ans_dict)):
-#    user_answer = input(list(quest_ans_dict.keys())[j] + "\n\n")
-#    print('\n' + quest_ans_dict[list(quest_ans_dict.keys())[j]] + '\n')
+for j in range(len(quest_ans_dict)):
+    user_answer = input(list(quest_ans_dict.keys())[j] + "\n\n")
+    print('\n' + quest_ans_dict[list(quest_ans_dict.keys())[j]] + '\n')
 
 #Exit prompt to user
 print("That's all the questions. Great job!")
