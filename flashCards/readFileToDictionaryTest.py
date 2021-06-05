@@ -18,16 +18,17 @@ def quiz_me():
     print('\n'.join(available_questions_mo))
 
     #Ask user input of what they'd like to be quizzed on from the options given.
+    #TODO: Fix error inputting Universal Python returning NoneType
     while True:
         user_topic = input("\nWhat would you like to be quizzed on today? (CH1, Universal Python, etc.)\n")
         if "Questions on " + user_topic in read_to_dict_text:
             break
 
     #Create a regular expression to isolate text inbetween string "Questions on {topic}" and "Questions on {following topic}"
-    quest_ans_regex = re.compile(r"Questions\son\s" + user_topic + r".*Questions\son\s", re.DOTALL)
+    quest_ans_regex = re.compile(r"Questions\son\s" + user_topic + r".*Questions\son", re.DOTALL)
     quest_ans_mo = quest_ans_regex.search(read_to_dict_text)
 
-    #TODO: Assign all !Q. to a dictionary as keys with respective !A. as values
+    #Assign all !Q. to a dictionary as keys with respective !A. as values
     questions_regex = re.compile(r"!Q\.\s.*")
     answers_regex = re.compile(r"!A\.\s.*")
 
@@ -45,7 +46,7 @@ def quiz_me():
         print('\n' + quest_ans_dict[list(quest_ans_dict.keys())[j]] + '\n')
 
     #Exit prompt to user
-    print("That's all the questions. Great job!")
+    print("\nThat's all the questions. Great job!")
 
 #Add option to be quizzed again
 while True:
