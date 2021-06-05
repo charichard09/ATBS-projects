@@ -1,7 +1,7 @@
 #Script that can either create new flash cards, or review previous flash cards.
 #Date: 05-11-2021 
 
-
+import quizMe
 
 #TODO: Load flashCards.txt into both dictionaries
 

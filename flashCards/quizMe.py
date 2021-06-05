@@ -5,7 +5,7 @@ import sys, os, re
 
 def quiz_me():
     #os.path.dirname(sys.argv[0]) will return a string of readFileToDictionaryTest.py's directory path, which we assume read_to_dict.txt is also in
-    read_to_dict_fo = open(os.path.dirname(sys.argv[0]) + "/read_to_dict.txt", 'r')
+    read_to_dict_fo = open(os.path.dirname(sys.argv[0]) + "/quizQuestions.txt", 'r')
 
     read_to_dict_text = read_to_dict_fo.read()
 
@@ -18,7 +18,6 @@ def quiz_me():
     print('\n'.join(available_questions_mo))
 
     #Ask user input of what they'd like to be quizzed on from the options given.
-    #TODO: Fix error inputting Universal Python returning NoneType
     while True:
         user_topic = input("\nWhat would you like to be quizzed on today? (CH1, Universal Python, etc.)\n")
         if "Questions on " + user_topic in read_to_dict_text:
