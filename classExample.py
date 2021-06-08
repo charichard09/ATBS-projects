@@ -1,5 +1,5 @@
 class Person:
-    "This is a perso class"
+    "This is a person class"
     age = 10
 
     def greet(self):
