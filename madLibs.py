@@ -2,7 +2,16 @@
 #then create a new file with the new words in place of the old words and print to screen.
 #Date: 6-8-2021 #Dev: Richard Cha
 
+import os, sys
+
 #TODO: open file as r+ and read to variable
+mad_libs_fo = open(os.path.dirname(sys.argv[0]) + "/madLibs.txt")
+
+mad_libs_text = mad_libs_fo.read()
+
+mad_libs_fo.close()
+
+print(mad_libs_text)
 
 #TODO: create regex for ADJECTIVE, NOUN, ADVERB, VERB
 
