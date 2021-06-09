@@ -4,23 +4,26 @@
 
 import os, sys
 
-#TODO: open file as r+ and read to variable
-mad_libs_fo = open(os.path.dirname(sys.argv[0]) + "/madLibs.txt")
+#open file as r+ and read to variable
+mad_libs_fo = open(os.path.dirname(sys.argv[0]) + "/madLibs.txt", 'r+')
 
 mad_libs_text = mad_libs_fo.read()
 
 mad_libs_fo.close()
 
-print(mad_libs_text)
-
-#TODO: create regex for ADJECTIVE, NOUN, ADVERB, VERB
-
-#TODO: split read string, iterate through list of all words and everytime 1 of 4 words comes up, 
+#split read string, iterate through list of all words and everytime any of 4 words comes up, 
 #prompt user to replace said word with input word, replace, continue
-# file_read.split(' '),
+mad_libs_list = mad_libs_text.split(' ')
 
-#TODO: rejoin list with ' '.join(split_string) and print to screen
+#TODO: split() method will split words with punctuation causing the program to not recognize words
+#Find out way to remove punctuation
+for i in range(len(mad_libs_list)):
+    if mad_libs_list[i] in ["ADJECTIVE", "VERB", "NOUN", "ADVERB"]:
+        answer = input("Please enter a " + mad_libs_list[i].lower() + ":\n")
+        mad_libs_list[i] = answer
 
+#rejoin list with ' '.join(split_string) and print to screen
+print(' '.join(mad_libs_list))
 
 
 
