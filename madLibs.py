@@ -15,7 +15,7 @@ mad_libs_fo.close()
 #prompt user to replace said word with input word, replace, continue
 mad_libs_list = mad_libs_text.split(' ')
 
-#TODO: split() method will split words with punctuation causing the program to not recognize words
+#split() method will split words with punctuation causing the program to not recognize words
 #Find out way to remove punctuation
 #Solution: remove punctation from words in mad_libs_list using regex and re.sub()
 ml_list_no_punc = copy.copy(mad_libs_list)
