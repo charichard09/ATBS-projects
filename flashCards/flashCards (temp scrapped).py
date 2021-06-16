@@ -1,12 +1,14 @@
 #Script that can either create new flash cards, or review previous flash cards.
 #Date: 05-11-2021 
 
+import quizMe
+
 #TODO: Load flashCards.txt into both dictionaries
 
 flash_cards_dict = {}
 topic_dict = {}
 
-flash_cards_fo = open("flashCards text.txt", r)
+flash_cards_fo = open("flashCards text.txt", 'r')
 
 flash_cards_read = flash_cards_fo.read()
 
