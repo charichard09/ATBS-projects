@@ -18,7 +18,7 @@ for dir_path, dir_name, file_name in os.walk(directory):
     print(str(dir_path) + '\n' + str(dir_name) + '\n' + str(file_name))
     for file in file_name:
     
-    # TODO: for each iteration, open dir_path + file in file_name (which gives the absolute path of file), read it, search it with regex_obj 
+    # For each iteration, open dir_path + file in file_name (which gives the absolute path of file), read it, search it with regex_obj 
     # if regex_obj != NoneType, print regex_obj.group(), print i in iteration       
         with open(dir_path + '/' + file, 'r') as file_obj:
             file_text = file_obj.read()
