@@ -8,7 +8,7 @@ answer = input("Please enter what you would like to be searched for: \n")
 
 phrase_regex = re.compile(answer, re.IGNORECASE)
 
-# Assume the text files are in a folder below this program called text2Search, search folder by writing a loop that will iterate through
+# Assume the text files are in a relative folder below this program called text2Search, search folder by writing a loop that will iterate through
 # the directory of text2Search
 directory = os.path.dirname(sys.argv[0]) + "/text2Search"
 
