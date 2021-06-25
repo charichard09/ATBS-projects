@@ -28,10 +28,14 @@ elif not os.path.isdir(f"{directory}/backup"):
 
 assert os.path.isdir(f"{directory}/backup"), "Something went wrong. Backup folder not created."
 
-# TODO: Walk the directory and print all files and folders
+# Walk the directory and print all files and folders
 # iterate through directories, if extension in file name is true, copy it to new folder
 
 for dir_name, sub_dir, list_files in os.walk(directory):
     for file_name in list_files:
         if extension in file_name:
-            shutil.copy(os.path.join(dir_name, file_name), f"{directory}/backup")
+            try:
+                shutil.copy(os.path.join(dir_name, file_name), f"{directory}/backup")
+            except shutil.SameFileError:
+                print("File already exists. Skipping and moving on.")
+                continue
