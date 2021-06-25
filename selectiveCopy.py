@@ -30,8 +30,9 @@ assert os.path.isdir(f"{directory}/backup"), "Something went wrong. Backup folde
 
 # Walk the directory and print all files and folders
 # iterate through directories, if extension in file name is true, copy it to new folder
+# Solve issue with repeat discovery of same file using os.walk() causing shutil.SameFileError
 
-for dir_name, sub_dir, list_files in os.walk(directory):
+for dir_name, sub_dir, list_files in os.walk(directory, topdown=False):
     for file_name in list_files:
         if extension in file_name:
             try:
