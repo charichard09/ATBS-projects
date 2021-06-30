@@ -11,7 +11,14 @@ print("Googling...")
 res = requests.get("http://google.com/search?q=" + ' '.join(sys.argv[1:]))
 res.raise_for_status()
 
-#TODO: Retrieve the search results page
+# Retrieve the search results page
+webpage_BSO = bs4.BeautifulSoup(res.text, "html.parser")
 
-#TODO: Opens a browser tab for each result
+# Opens a browser tab for each result
+webpage_tagO = webpage_BSO.select("div .g a")
 
+print(str(webpage_tagO[0]))
+
+num_open = min(5, len(webpage_tagO))
+for i in range(num_open):
+    webbrowser.open("http://google.com" + webpage_tagO[i].get('href'))
