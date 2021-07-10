@@ -8,7 +8,9 @@ amazon_site = "http://www.amazon.com/"
 search_this = input("What would you like to search for? \n")
 
 # Create search URL using Amazons base search url is "http://www.amazon.com/s?k=" and download its html
-search_res_obj = requests.get(amazon_site + "s?k=" + search_this.replace(' ', '+'))
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',}
+
+search_res_obj = requests.get(amazon_site + "s?k=" + search_this.replace(' ', '+'), headers=headers)
 search_res_obj.raise_for_status()
 
 search_bs_obj = bs4.BeautifulSoup(search_res_obj.text, "html.parser")
