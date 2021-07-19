@@ -6,14 +6,14 @@ import webbrowser
 
 PATH = r"C:\Users\chari\Documents\Python Programs\ATBS Scripts and Projects\Selenium\chromedriver.exe"
 browser = webdriver.Chrome(PATH)
-browser.get("http://inventwithpython.com")
+browser.get("https://www.google.com")
 
 try:
-    link_elem = browser.find_element_by_link_text("Buy on Amazon")
+    input_elem = browser.find_elements_by_tag_name("input")
     #print("Found href to %s !" % (elem.get_attribute("href")))
-    link_elem.click()
+    input_elem[0].send_keys("Pokemon Cards")
+    print(input_elem[3].get_attribute("value"))
+    input_elem[3].click()
 except:
     print("Was not able to find an element with that name.")
 
-#webbrowser.open(elem.get_attribute("href"))
-#elem.click()
