@@ -19,7 +19,7 @@ search_box.send_keys(answer)
 search_box.submit()
 
 # TODO: print the top 1-5 options and ask the user to select 1 or none
-print(browser.current_url)
+print("website: " + browser.current_url)
 
 # Need to imitate fake browser
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',}
@@ -27,7 +27,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 search_page = requests.get(browser.current_url, headers=headers)
 search_page.raise_for_status()
 
-print(search_page.encoding)
+print("converting " + search_page.encoding + " to utf-8\n")
 search_page.encoding = "utf-8"
 # use .text method on search_page request object to return text of request object to then be made into bs object
 bs4_search = bs4.BeautifulSoup(search_page.text, "html.parser")
@@ -38,13 +38,17 @@ bs4_search = bs4.BeautifulSoup(search_page.text, "html.parser")
 result_names = bs4_search.select(".jss65")
 result_calories = bs4_search.select(".jss70")
 
-calories = result_calories[0].getText()
+# IF for loop below works, delete: calories = result_calories[0].getText()
 
-#calories = calories.decode('utf-8')
-print(calories)
+print(f"Found {len(result_names)} matches.\nNow showing top 5 matches...\n")
 
-print(len(result_names))
-print(result_names[0].getText() + '\n' + calories)
+for i in range(5):
+    try:
+        print(result_names[i].getText() + '\n' + result_calories[i].getText() + "\n")
+    except IndexError:
+        break
+
+browser.close()
 
 # TODO: retry, quit, or if an option is selected, return calorie value of item
 
