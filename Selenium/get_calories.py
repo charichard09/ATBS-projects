@@ -50,9 +50,11 @@ for i in range(5):
 
 browser.close()
 
-# TODO: retry, quit, or if an option is selected, return calorie value of item
+# TODO: retry, ask for next 5 results, quit
 
+# TODO: if an option is selected, ask "1 serving is {x}, how many estimated servings did we have?" 
+# calculate {x}:servings ration and return {y}:calories ratio, return calorie value of item
 
-# Ask the user what to look up and call function
-#answer = input("What would you like to search?\n")
-#get_calories(answer)
+# turn get_calories into function, ask the user what to look up and call function
+# answer = input("What would you like to search?\n")
+# get_calories(answer)
