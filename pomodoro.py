@@ -10,6 +10,7 @@ number = 1
 loop_names = {"Break": 300, "Loop 0": 2}
 freq = 440 # Hz
 duration = 500 # milliseconds
+zero_insert = ''
 
 while to_loop == "y":
     # Get pomo duration in minutes, convert to seconds, save into dictionary
@@ -35,6 +36,10 @@ for i in range(number + 1):
         if f"Loop {i}" in loop_names:
             for j in range(loop_names[f"Loop {i}"]):
                 dt_obj = datetime.datetime.now()
+                if len(dt_obj.minute) < 2:
+                    zero_insert = "0"
+                else: 
+                    zero_insert = ""
                 print(f"{dt_obj.hour}:{dt_obj.minute}:{dt_obj.second}", end='\r')
                 time.sleep(1)
         compensation_time = ((time.time() - 2) - start_time) / 2
@@ -43,7 +48,11 @@ for i in range(number + 1):
     if f"Loop {i}" in loop_names:
         for j in range(loop_names[f"Loop {i}"]):
             dt_obj = datetime.datetime.now()
-            print(f"{dt_obj.hour}:{dt_obj.minute}:{dt_obj.second}", end='\r')              # temporary to see if time is correct
+            if len(dt_obj.minute) < 2:
+                zero_insert = "0"
+            else: 
+                zero_insert = ""
+            print(f"{dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}", end='\r')              # temporary to see if time is correct
             time.sleep(1 - compensation_time)
 
     # TODO: When timer hits inputted duration, stop and sound an alarm using winsound.Beep()
