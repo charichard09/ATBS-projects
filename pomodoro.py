@@ -34,14 +34,16 @@ for i in range(number + 1):
         start_time = time.time()
         if f"Loop {i}" in loop_names:
             for j in range(loop_names[f"Loop {i}"]):
-                print(datetime.datetime.now())
+                dt_obj = datetime.datetime.now()
+                print(f"{dt_obj.hour}:{dt_obj.minute}:{dt_obj.second}")
                 time.sleep(1)
         compensation_time = ((time.time() - 2) - start_time) / 2
         continue
 
     if f"Loop {i}" in loop_names:
         for j in range(loop_names[f"Loop {i}"]):
-            print(datetime.datetime.now())              # temporary to see if time is correct
+            dt_obj = datetime.datetime.now()
+            print(f"{dt_obj.hour}:{dt_obj.minute}:{dt_obj.second}")              # temporary to see if time is correct
             time.sleep(1 - compensation_time)
 
     # TODO: When timer hits inputted duration, stop and sound an alarm using winsound.Beep()
@@ -52,6 +54,7 @@ for i in range(number + 1):
     input("Pomodoro time is done. Press Enter to start Break.\n")
 
     for k in range(loop_names["Break"]):
+        print(datetime.datetime.now())
         time.sleep(1 - compensation_time)
     
     for amt_beep in range(4):
@@ -61,3 +64,10 @@ for i in range(number + 1):
 
 # TODO: In the future, possibly using Shelve variable storage, ask user if theyd like to store time inputs into shelve to be recalled 
 # next time script is ran
+
+# TODO: After about 6 minutes, program becomes 1 second off. Could try testing finding compensation time every loop instead of just once.
+# From start: 2021-08-21 04:13:40.793317 to finish: 2021-08-21 04:23:40.654145, I'm only off by .14. I should be off by 1.14, finish time
+# should be 41.65? As program executes, milliseconds goes down eventually this happens:
+# 2021-08-21 04:20:18.000291
+# 2021-08-21 04:20:18.998539
+# seconds repeat, yet finish time doesnt showcase this skip? I am definitely missing something. 
