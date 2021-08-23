@@ -3,7 +3,7 @@
 
 import time, winsound, datetime
 
-# TODO: Ask user how long to set first pomo duration. Then ask user if they'd like to add another pomo duration. When no 
+# Ask user how long to set first pomo duration. Then ask user if they'd like to add another pomo duration. When no 
 # further times are wanted, prompt "press Enter to begin."
 to_loop = "y"
 number = 1
@@ -28,7 +28,7 @@ while to_loop == "y":
 print(loop_names)
 input("Press Enter to begin.\n")
 
-# TODO: Use time.time() and execution time compensation to go through duration and print timer along the way.
+# Use time.time() and execution time compensation to go through duration and print timer along the way.
 for i in range(number + 1):
     #figure out compensation needed for execution time by running 1 loop
     if i == 0:
@@ -63,7 +63,12 @@ for i in range(number + 1):
     input("Pomodoro time is done. Press Enter to start Break.\n")
 
     for k in range(loop_names["Break"]):
-        print(datetime.datetime.now())
+        dt_obj = datetime.datetime.now()
+        if len(dt_obj.minute) < 2:
+            zero_insert = "0"
+        else: 
+            zero_insert = ""
+        print(f"{dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}", end='\r')
         time.sleep(1 - compensation_time)
     
     for amt_beep in range(4):
@@ -73,6 +78,9 @@ for i in range(number + 1):
 
 # TODO: In the future, possibly using Shelve variable storage, ask user if theyd like to store time inputs into shelve to be recalled 
 # next time script is ran
+
+# TODO: Need to make printout of datetime.datetime.now() to a variation of datetime.timedelta(hours=x, minutes=y, seconds=z) object + 
+# datetime.datetime.now() to show either a countdown or countup towards end of current loop
 
 # TODO: After about 6 minutes, program becomes 1 second off. Could try testing finding compensation time every loop instead of just once.
 # From start: 2021-08-21 04:13:40.793317 to finish: 2021-08-21 04:23:40.654145, I'm only off by .14. I should be off by 1.14, finish time
