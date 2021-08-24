@@ -5,19 +5,31 @@ import re, os, sys
 
 # Have user input a string, then create regex from that string
 answer = input("Please enter what you would like to be searched for: \n")
+name_found = 0
 
 phrase_regex = re.compile(answer, re.IGNORECASE)
 
-# TODO: Assume the text files are in a folder below this program called text2Search, search folder by writing a loop that will iterate through
+# Assume the text files are in a relative folder below this program called text2Search, search folder by writing a loop that will iterate through
 # the directory of text2Search
-directory = os.path.dirname(sys.argv[0]) + "/text2Search/"
+directory = os.path.dirname(sys.argv[0]) + "/text2Search"
 
-assert os.path.exists(directory) == False, "no text2Search directory found"
+assert os.path.exists(directory) != False, "no text2Search directory found"
 
+for dir_path, dir_name, file_name in os.walk(directory):
+    print("\nSearching " + dir_path + '...\nFound folders: ' + ", ".join(dir_name) + '\nFound files: ' + ", ".join(file_name))
+    for file in file_name:
+    
+    # For each iteration, open dir_path + file in file_name (which gives the absolute path of file), read it, search it with regex_obj 
+    # if regex_obj != NoneType, print regex_obj.group(), print i in iteration       
+        with open(dir_path + '/' + file, 'r') as file_obj:
+            file_text = file_obj.read()
+            answer_mo = phrase_regex.search(file_text)
+            if answer_mo != None:
+                print(answer + " was found in " + file)
+                name_found = 1
 
-
-
-
-# TODO: for each iteration, open .txt, save it, search it with regex_obj 
-# if regex_obj != NoneType, print regex_obj.group(), print i in iteration
-
+if name_found == 0:
+    print("\nNo name was found")
+                
+            
+            
