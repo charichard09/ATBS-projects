@@ -36,11 +36,11 @@ for i in range(number + 1):
         if f"Loop {i}" in loop_names:
             for j in range(loop_names[f"Loop {i}"]):
                 dt_obj = datetime.datetime.now()
-                if len(dt_obj.minute) < 2:
+                if dt_obj.minute < 2:
                     zero_insert = "0"
                 else: 
                     zero_insert = ""
-                print(f"{dt_obj.hour}:{dt_obj.minute}:{dt_obj.second}", end='\r')
+                print(f"{dt_obj.hour}:{dt_obj.minute}:{dt_obj.second}\n", end='\r')
                 time.sleep(1)
         compensation_time = ((time.time() - 2) - start_time) / 2
         continue
@@ -48,11 +48,11 @@ for i in range(number + 1):
     if f"Loop {i}" in loop_names:
         for j in range(loop_names[f"Loop {i}"]):
             dt_obj = datetime.datetime.now()
-            if len(dt_obj.minute) < 2:
+            if dt_obj.minute < 2:
                 zero_insert = "0"
             else: 
                 zero_insert = ""
-            print(f"{dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}", end='\r')              # temporary to see if time is correct
+            print(f"{dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}\n", end='\r')              # temporary to see if time is correct
             time.sleep(1 - compensation_time)
 
     # TODO: When timer hits inputted duration, stop and sound an alarm using winsound.Beep()
@@ -64,11 +64,11 @@ for i in range(number + 1):
 
     for k in range(loop_names["Break"]):
         dt_obj = datetime.datetime.now()
-        if len(dt_obj.minute) < 2:
+        if dt_obj.minute < 2:
             zero_insert = "0"
         else: 
             zero_insert = ""
-        print(f"{dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}", end='\r')
+        print(f"{dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}\n", end='\r')
         time.sleep(1 - compensation_time)
     
     for amt_beep in range(4):
