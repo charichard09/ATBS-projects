@@ -90,7 +90,7 @@ for i in range(number + 1):
             zero_insert = "0"
         else: 
             zero_insert = ""
-        print(f" {dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}", end='\r')
+        print(f"Loop Cur: {dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}", end='\r')
         time.sleep(1 - compensation_time)
     
     for amt_beep in range(4):
