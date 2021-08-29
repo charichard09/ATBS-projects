@@ -40,19 +40,31 @@ for i in range(number + 1):
                     zero_insert = "0"
                 else: 
                     zero_insert = ""
-                print(f" {dt_obj.hour}:{dt_obj.minute}:{dt_obj.second}", end='\r')
+                print(f"Loop end: {dt_obj.hour}:{dt_obj.minute}:{dt_obj.second}", end='\r')
                 time.sleep(1)
         compensation_time = ((time.time() - 2) - start_time) / 2
         continue
 
     if f"Loop {i}" in loop_names:
+        # Print end time of loop
+        dt_obj = datetime.datetime.now()
+        dt_delta = datetime.timedelta(minutes=loop_names[f"Loop {i}"]/60)
+        end_time = dt_obj + dt_delta
+        if len(str(end_time.minute)) < 2:
+            zero_insert = "0"
+        else: 
+            zero_insert = ""
+        
+        print(f"Loop End: {end_time.hour}:{zero_insert}{end_time.minute}:{end_time.second}")  
+
+
         for j in range(loop_names[f"Loop {i}"]):
             dt_obj = datetime.datetime.now()
             if len(str(dt_obj.minute)) < 2:
                 zero_insert = "0"
             else: 
                 zero_insert = ""
-            print(f" {dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}", end='\r')              # temporary to see if time is correct
+            print(f"Loop Cur: {dt_obj.hour}:{zero_insert}{dt_obj.minute}:{dt_obj.second}", end='\r')              # temporary to see if time is correct
             time.sleep(1 - compensation_time)
 
     # TODO: When timer hits inputted duration, stop and sound an alarm using winsound.Beep()
@@ -61,6 +73,16 @@ for i in range(number + 1):
 
     # TODO: Ask user to press ENTER when ready for 5 min interval. Reset loop (could also recall as function)
     input("Pomodoro time is done. Press Enter to start Break.\n")
+
+    # Print end time of loop
+    dt_obj = datetime.datetime.now()
+    dt_delta = datetime.timedelta(minutes=loop_names["Break"]/60)
+    end_time = dt_obj + dt_delta
+    if len(str(end_time.minute)) < 2:
+        zero_insert = "0"
+    else: 
+        zero_insert = ""
+    print(f"Loop End: {end_time.hour}:{zero_insert}{end_time.minute}:{end_time.second}")  
 
     for k in range(loop_names["Break"]):
         dt_obj = datetime.datetime.now()
