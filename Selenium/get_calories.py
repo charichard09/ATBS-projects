@@ -18,7 +18,7 @@ search_box = browser.find_element_by_tag_name("input")
 search_box.send_keys(answer)
 search_box.submit()
 
-# TODO: print the top 1-5 options and ask the user to select 1 or none
+# print the top 1-5 options 
 print("website: " + browser.current_url)
 
 # Need to imitate fake browser
@@ -38,8 +38,7 @@ bs4_search = bs4.BeautifulSoup(search_page.text, "html.parser")
 result_names = bs4_search.select(".jss65")
 result_calories = bs4_search.select(".jss70")
 
-# IF for loop below works, delete: calories = result_calories[0].getText()
-
+# Print top 5 matches and close
 print(f"Found {len(result_names)} matches.\nNow showing top 5 matches...\n")
 
 for i in range(5):
@@ -50,7 +49,8 @@ for i in range(5):
 
 browser.close()
 
-# TODO: retry, ask for next 5 results, quit
+# TODO: retry, ask for next 5 results, 
+
 
 # TODO: if an option is selected, ask "1 serving is {x}, how many estimated servings did we have?" 
 # calculate {x}:servings ration and return {y}:calories ratio, return calorie value of item
