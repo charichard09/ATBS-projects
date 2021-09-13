@@ -6,9 +6,11 @@ from selenium import webdriver
 import requests, bs4, os, sys, subprocess
 
 #def get_calories(food):
+# if importing get_calories() in another file, you need to also import the correct above modules
     
 answer = input("What would you like to search?\n")
 
+# Assign path location of chromedriver.exe download from selenium website
 PATH = r"C:\Users\chari\Documents\Python Programs\ATBS Scripts and Projects\Selenium\chromedriver.exe"
 browser = webdriver.Chrome(PATH)
 
@@ -50,11 +52,11 @@ for i in range(5):
 
 browser.close()
 
-# TODO: retry, ask for next 5 results, or end
+# TODO: retry, ask for next 5 results, or end (recursion? / call function get_calories() again)
 answer = input("Would you like to retry (r), get the next 5 search results (n), or end (e)? \n")
 
 if answer == 'r':
-    subprocess.Popen(["C:\\Users\\chari\\Documents\\Python Programs\\ATBS_Scripts_and_Projects_envs\\beautifulSoupTest_env\\Scripts\\python.exe", "Selenium\\get_calories.py"])
+    
 
 # TODO: if an option is selected, ask "1 serving is {x}, how many estimated servings did we have?" 
 # calculate {x}:servings ration and return {y}:calories ratio, return calorie value of item
