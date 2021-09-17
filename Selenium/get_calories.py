@@ -44,26 +44,39 @@ def get_calories(food):
 
     for i in range(5):
         try:
-            print(result_names[i].getText() + '\n' + result_calories[i].getText() + "\n")
+            print(str(i) + ". " + result_names[i].getText() + '\n' + result_calories[i].getText() + "\n")
         except IndexError:
             break
 
-    browser.close()
-
-    # TODO: retry, ask for next 5 results, or end (recursion? / call function get_calories() again)
+    # Retry, ask for next 5 results, or end (recursion? / call function get_calories() again)
     answer = input("Would you like to retry (r), get the next 5 search results (n), or end (e)? \n")
 
+    # Raise exception if answer doesn't match any characters
+    if answer not in ['r', 'e', 'n']:
+        browser.close()
+        raise Exception("       ERROR: not a valid answer")
+
     if answer == 'e':
+        browser.close()
         return 0
     elif answer == 'r':
+        browser.close()
         answer = input("What would you like to search?\n")
         get_calories(answer)
+    elif answer == 'n':
+        for j in range(5, 10):
+            try:
+                print(str(j) + ". " + result_names[j].getText() + '\n' + result_calories[i].getText() + '\n')
+            except IndexError:
+                print("No more matches found.")
+                break
+    
+    browser.close()
+
 
     # TODO: if an option is selected, ask "1 serving is {x}, how many estimated servings did we have?" 
     # calculate {x}:servings ration and return {y}:calories ratio, return calorie value of item
 
-    # turn get_calories into function, ask the user what to look up and call function
-    # answer = input("What would you like to search?\n")
 
 answer = input("What would you like to search?\n")
 get_calories(answer)
