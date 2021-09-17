@@ -16,3 +16,6 @@ im = Image.new("RGBA", (100, 200), "green")
 im.save(r"C:\Users\chari\Documents\Python Programs\ATBS_Online_Materials\greenImage.png")  
 im2 = Image.new("RGBA", (20, 20))
 im2.save(r"C:\Users\chari\Documents\Python Programs\ATBS_Online_Materials\transparentImage.png")
+
+croppedIm = catIm.crop((335, 345, 565, 560))
+croppedIm.save(r"C:\Users\chari\Documents\Python Programs\ATBS_Online_Materials\cropped.png")
