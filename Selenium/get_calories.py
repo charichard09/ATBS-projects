@@ -44,7 +44,7 @@ def get_calories(food):
 
     for i in range(5):
         try:
-            print(str(i) + ". " + result_names[i].getText() + '\n' + result_calories[i].getText() + "\n")
+            print(str(i + 1) + ". " + result_names[i].getText() + '\n' + result_calories[i].getText() + "\n")
         except IndexError:
             break
 
