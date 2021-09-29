@@ -20,16 +20,28 @@ def longest_repetition(chars):
     answer = sorted(char_count.items(), key=lambda x:x[1], reverse=True)
     
     return answer[0]
-    
+
     # Check if chars is blank, return ()'', 0)
-#    if chars == '':
+    #    if chars == '':
        # return ('', 0)
     
     # Iterate through string
-#    char_count = {}
+    #    char_count = {}
     
-#    for i in chars:
-#        char_count[i] = 1 + char_count.setdefault(i, 0)
+    #    for i in chars:
+    #        char_count[i] = 1 + char_count.setdefault(i, 0)
+
+# Test program
+tests = [
+    ["aaaabb", ('a', 4)],
+    ["bbbaaabaaaa", ('a', 4)],
+    ["cbdeuuu900", ('u', 3)],
+    ["abbbbb", ('b', 5)],
+    ["aabb", ('a', 2)],
+    ["ba", ('b', 1)],
+    ["", ('', 0)],
+]
+longest_repetition(tests)
         
         
 #    answer = sorted(char_count.items(), key=lambda x:x[1], reverse=True)
