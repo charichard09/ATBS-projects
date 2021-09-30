@@ -1,6 +1,8 @@
 # Program that will take a string as an argument and return the longest consecutive single character found and how many times it was found.
 # i.e. string "aaaabbaafff" would return ('a', 4)
 
+# ERROR: Caused by use of sorted function sorting equal valued keys alphabetically, whereas the answer wants to return equal valued keys
+# as first to show up. A case of using an outside function doing more and something you did not intend.
 def longest_repetition(chars):
 
     if chars == '':
@@ -20,20 +22,14 @@ def longest_repetition(chars):
 	    char_count[i] = j - 1
     
     # Using sorted function, sort dictionary items in char_count from highest to lowest, then return highest being answer[0]
+    print(char_count.items())
+
     answer = sorted(char_count.items(), key=lambda x:x[1], reverse=True)
     
     return print(answer[0])
-
-    # Check if chars is blank, return ()'', 0)
-    #    if chars == '':
-       # return ('', 0)
-    
-    # Iterate through string
-    #    char_count = {}
-    
-    #    for i in chars:
-    #        char_count[i] = 1 + char_count.setdefault(i, 0)
         
+
+# Copied and learned different approach to problem.
 def longest_repetition2(chars):
     # define a current max_count, max_char variable pair
     # define a count, char, pair
@@ -73,5 +69,5 @@ tests = [
     ["", ('', 0)],
 ]
 for i in range(len(tests)):
-    longest_repetition2(tests[i][0])
+    longest_repetition(tests[i][0])
     print("Answer should be " + str(tests[i][1]))
