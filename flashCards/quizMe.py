@@ -24,7 +24,12 @@ def quiz_me():
             break
 
     #Create a regular expression to isolate text inbetween string "Questions on {topic}" and "Questions on {following topic}"
-    quest_ans_regex = re.compile(r"Questions\son\s" + user_topic + r".*Questions\son", re.DOTALL)
+    # Error: Quizzing on topic "X" is not stopping at the correct spot. Should be stopping at "Questions on Y"
+    # FIXED 11-17-21: Reason was because compiling ".*" in .*Questions\son was being "greedy" and searching ALL
+    # of the string until it could no longer find more "Questions\son". Fixed by limiting .* with .*? making .* match as
+    # few characters as possible "Questions on" to ".*?!END"
+    # Other solution was to make the end of each Questions On unique (i.e. "!END CH2")
+    quest_ans_regex = re.compile(r"Questions\son\s" + user_topic + r".*?!END", re.DOTALL)
     quest_ans_mo = quest_ans_regex.search(read_to_dict_text)
 
     #Assign all !Q. to a dictionary as keys with respective !A. as values
