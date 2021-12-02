@@ -26,12 +26,13 @@ def rot13(message):
                     # the repeated alphabet in alphabet13, but this time adding 13 to alphabet13 brings it out of index range.
                     # Problem solved by breaking out of loop on first match.
     answer = "".join(answer)          # re-join temp into a string and reassign to answer
-    print(answer)
+    return answer
 
 # Test rot13
 
 response = input("Please enter a string you would like to shift:\n")
-rot13(response)
+print('\n' + rot13(response))
+input("\npress enter key to exit.")
 
 
 
