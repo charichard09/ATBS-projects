@@ -1,34 +1,24 @@
-# Program (called ROT13 on Codewars) that will iterate through a string and replace every 13th letter with the letter 13 places away from it in 
+# Program (called ROT13 on Codewars) that will iterate through a string and replace every letter with the letter 13 places away from it in 
 # the alphabet. Will ignore any symbols or numbers.
 # Date: 10/27/21 Dev: Richard C.
-
-import re
 
 def rot13(message):
 
     # Create variable list for double alphabet "abcdefghijklmnopqrstuvwxyzabcdefghijklm" to find letter +13 away, define other variables 
     alphabet13 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"]
-    counter = 0
 
-    # convert message into list and assign to answer so on every "13th letter message/alphabet+13 match conversion" event, answer is mutable and
+    # convert message into list and assign to answer so on every "letter message/alphabet+13 match conversion" event, answer is mutable and
     # can be changed, then once finished, re-join answer into string and return as final answer
     answer = list(message)
 
-
-    # Make a while loop if counter < 13; continue, for each loop, iterate through each index of string and if value at index is
-    # in the alphabet, increment counter
     for i in range(len(message)):
         if message[i].isalpha() == True:
-            counter +=1
-
-        # Once counter == 13; counter = 0; replace current index of string to letter 13 letters from current index character 
-        if counter == 13:
-            counter = 0
-            # Iterate and search for index char in alphabet variable, once index char i == j in alphabet string, get index of j,
-            # replace i with index of j+13; continue
             for j in range(len(alphabet13)):
-                if message[i] == alphabet13[j]:
-                    answer[i] = alphabet13[j+13]      # for index i where the 13th char was found, change index i of temp to letter in alpha +13
+                if message[i].lower() == alphabet13[j]:     # Added .lower() to match condition even if message is upper case
+                    answer[i] = alphabet13[j+13]            # for index i where the 13th char was found, change index i of temp to letter in alpha +13
+                    # If message is upper case, convert answer[i] to upper case also
+                    if message[i].isupper():
+                        answer[i] = answer[i].upper()
                     break
 
                     # ERROR: IndexError     no breaking out of for loop means message[i] == alphabet13[j] will first correctly match similar 
