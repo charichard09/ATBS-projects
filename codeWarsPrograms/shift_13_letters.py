@@ -9,7 +9,10 @@ def rot13(message):
     # Create variable list for double alphabet "abcdefghijklmnopqrstuvwxyzabcdefghijklm" to find letter +13 away, define other variables 
     alphabet13 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"]
     counter = 0
-    answer = message
+
+    # convert message into list and assign to answer so on every "13th letter message/alphabet+13 match conversion" event, answer is mutable and
+    # can be changed, then once finished, re-join answer into string and return as final answer
+    answer = list(message)
 
 
     # Make a while loop if counter < 13; continue, for each loop, iterate through each index of string and if value at index is
@@ -25,16 +28,14 @@ def rot13(message):
             # replace i with index of j+13; continue
             for j in range(len(alphabet13)):
                 if message[i] == alphabet13[j]:
-                    temp = list(message)            # Convert message into a list and store in temp
-                    temp[i] = alphabet13[j+13]      # for index i where the 13th char was found, change index i of temp to letter in alpha +13
-                    answer = "".join(temp)          # re-join temp into a string and reassign to answer
+                    answer[i] = alphabet13[j+13]      # for index i where the 13th char was found, change index i of temp to letter in alpha +13
                     break
 
                     # ERROR: IndexError     no breaking out of for loop means message[i] == alphabet13[j] will first correctly match similar 
                     # indexes and return correct letter swap, then will continue the for loop matching character message[i] a second time with 
                     # the repeated alphabet in alphabet13, but this time adding 13 to alphabet13 brings it out of index range.
                     # Problem solved by breaking out of loop on first match.
-    
+    answer = "".join(answer)          # re-join temp into a string and reassign to answer
     print(answer)
 
 # Test rot13
