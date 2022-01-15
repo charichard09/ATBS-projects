@@ -8,7 +8,7 @@ def first_non_repeating_letter(word):
 
     for letter in word:
         if letter not in character_occurence:
-            character_occurence[letter] = word.count(i)
+            character_occurence[letter] = word.count(letter)
 
     #  iterate through dictionary, on first instance of value 1, return as first nonrepeating letter of string
     for key_letter in character_occurence:
