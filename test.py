@@ -17,6 +17,7 @@ print(what_is_your_grade(input("What was your grade?")))
 
 
 #  Convert any variation of yes or no to 1 or 0 to test 1 being True and 0 being False
+#  Date: 1-9-22
 def convert_to_int(word):
     pass
     yes_possibilities = ["yes", "y", "1", "True", "true"]
