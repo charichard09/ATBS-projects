@@ -39,7 +39,7 @@ def locate_non_repeat(characs):
     
     for character_key in character_occurrence:
         if character_occurrence[character_key] == 1:
-            return character_occurrence[character_key]
+            return character_key
 
     return ""
 
