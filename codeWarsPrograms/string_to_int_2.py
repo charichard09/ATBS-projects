@@ -33,19 +33,24 @@ def parse_int(int_word):
                 million_place_value.append(written_numbers[word])
             else:
                 #  add values to get million place value
+
+                #  Calculate for hundred if word hundred exists
                 if "hundred" in million_place_value:
                     million_place_value.remove("hundred")
                     million_place_value[0] = million_place_value[0] * 100
+                
+                #  Add together the hundreds/tens/ones place values then multiply by 1 million
                 print(million_place_value)
-                for i in range(len(million_place_value)):
-                    number = number + million_place_value[i]
+                for i in million_place_value:
+                    number = number + i
                 number = number * 1000000
                 million_calculated_flag = 1
-                break
+                continue
 
-        #  If thousand is in the string, find the integer at place value thousand, multiply by 1000, and store in thousand_place_value
-        ##if "thousand" in int_word_seperated:
-            #  TODO:
+        #  TODO: If thousand is in the string, find the integer at place value thousand, multiply by 1000, and store in thousand_place_value
+        if "thousand" in int_word_seperated and not thousand_calculated_flag:
+            if word != "thousand":
+              
 
         #  find the integer at the ones, tens, hundreds place value, then add million_place_value + thousand_place_value + this result to
         #  get final number
