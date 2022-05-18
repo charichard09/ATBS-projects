@@ -10,10 +10,13 @@ def parse_int(int_word):
 
     #  Assign number to be stored and returned, and string broken into a list, to variables
     number = 0
-    million_place_value = []
+    million_place_value_split = []
+    million_place_value = 0
     million_calculated_flag = 0
-    thousand_place_value = []
+    thousand_place_value_split = []
+    thousand_place_value = 0
     thousand_calculated_flag = 0
+    hundreds_place_value = 0
     int_word_seperated = int_word.split(" ")
 
     #  Make two dictionaries, one where keys are the strings of unique numbers and values are the int value of that number, and another 
@@ -27,34 +30,54 @@ def parse_int(int_word):
     print(int_word_seperated)
     
     for word in int_word_seperated:
-        #  If million is in the string, find the integer at place value million, multiply by 1000000, and store in million_place_value
+        #  If million is in the string, find the integer at place value million, multiply by 1000000, and store in million_place_value_split
         if "million" in int_word_seperated and not million_calculated_flag:   
             if word != "million":
-                million_place_value.append(written_numbers[word])
+                million_place_value_split.append(written_numbers[word])
             else:
                 #  add values to get million place value
 
                 #  Calculate for hundred if word hundred exists
-                if "hundred" in million_place_value:
-                    million_place_value.remove("hundred")
-                    million_place_value[0] = million_place_value[0] * 100
+                if "hundred" in million_place_value_split:
+                    million_place_value_split.remove("hundred")
+                    million_place_value_split[0] = million_place_value_split[0] * 100
                 
                 #  Add together the hundreds/tens/ones place values then multiply by 1 million
-                print(million_place_value)
-                for i in million_place_value:
-                    number = number + i
-                number = number * 1000000
+                print(million_place_value_split)
+                for i in million_place_value_split:
+                    million_place_value = million_place_value + i
+                million_place_value = million_place_value * 1000000
                 million_calculated_flag = 1
                 continue
 
-        #  TODO: If thousand is in the string, find the integer at place value thousand, multiply by 1000, and store in thousand_place_value
+        #  If thousand is in the string, find the integer at place value thousand, multiply by 1000, and store in thousand_place_value.
+        #  Test: If "million" was calculated, word would still start this if loop at the index where "thousand" place value would begin
         if "thousand" in int_word_seperated and not thousand_calculated_flag:
             if word != "thousand":
-              
-
+                  thousand_place_value_split.append(written_numbers[word])
+            else:
+                if "hundred" in thousand_place_value_split:
+                    thousand_place_value_split.remove("hundred")
+                    thousand_place_value_split[0] = thousand_place_value_split[0] * 100
+                
+                print(thousand_place_value_split)
+                for j in thousand_place_value_split:
+                    thousand_place_value = thousand_place_value + j
+                thousand_place_value = thousand_place_value * 1000
+                thousand_calculated_flag = 1
+                continue
+        
         #  find the integer at the ones, tens, hundreds place value, then add million_place_value + thousand_place_value + this result to
         #  get final number
+        if "hundred" in int_word_seperated:
+            int_word_seperated.remove("hundred")
+            hundreds_place_value = written_numbers[word] * 100
+            continue
         
+        hundreds_place_value = hundreds_place_value + written_numbers[word]
+    
+    number = million_place_value + thousand_place_value + hundreds_place_value
+
     
     return number
 
