@@ -5,8 +5,8 @@ def parse_int(int_word):
     print(f"The number we are parsing is: {int_word}")
 
     #  Remove any hyphen characters and "and" string and replace with ' '
-    int_word = int_word.replace('-', ' ')
-    int_word = int_word.replace("and", ' ')
+    int_word = int_word.remove('-')
+    int_word = int_word.remove("and")
 
     #  Assign number to be stored and returned, and string broken into a list, to variables
     number = 0
