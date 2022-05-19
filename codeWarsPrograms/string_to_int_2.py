@@ -92,7 +92,7 @@ def parse_int(int_word):
         
     if "hundred" in hundreds_place_value_split:
         hundreds_place_value_split.remove("hundred")
-        hundreds_place_value[0] = hundreds_place_value_split[0] * 100
+        hundreds_place_value_split[0] = hundreds_place_value_split[0] * 100
         
     #  Check hundreds_place_value_split
     print(hundreds_place_value_split)
