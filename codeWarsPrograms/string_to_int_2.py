@@ -1,5 +1,6 @@
 #  Second attempt at converting a string of a number to the int equivalent of that number.
 
+
 def parse_int(int_word):
 
     print(f"The number we are parsing is: {int_word}")
@@ -81,7 +82,7 @@ def parse_int(int_word):
                 thousand_calculated_flag = 1
                 continue
         
-        #  TODO: find the integer at the ones, tens, hundreds place value, then add million_place_value + thousand_place_value + this result to
+        #  Find the integer at the ones, tens, hundreds place value, then add million_place_value + thousand_place_value + this result to
         #  get final number
         if word == "hundred":
             hundreds_place_value_split.append("hundred")
@@ -94,15 +95,13 @@ def parse_int(int_word):
         hundreds_place_value_split.remove("hundred")
         hundreds_place_value_split[0] = hundreds_place_value_split[0] * 100
         
-    #  Check hundreds_place_value_split
-    print(hundreds_place_value_split)
     for k in hundreds_place_value_split:
         hundreds_place_value = k + hundreds_place_value
     
     number = million_place_value + thousand_place_value + hundreds_place_value
-
     
     return number
+
 
 #  Test
 test = ["one", "twenty", "fifty-six", "two hundred and forty-six", "fifty-five million six hundred seventy eight thousand two hundred and one", 
