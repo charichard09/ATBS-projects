@@ -13,9 +13,12 @@ def pascals_triangle(num_rows):
     row = [[1]]
     new_row = [1]
 
-    #  Loop and calculate each item in new_row. Once finished looping num_rows, concatenate new_row to row.
+    #  For n where n is number of rows, and beginning at the 2nd row because the top row will always be [1],
+    #  loop for every row, finding each item in that row using Pascal's Triangle formula
     for i in range(1, num_rows):
-        #  Doing row[-1] will mean we are always creating new_row using the last item appended to row
+        #  Doing row[-1] will mean after every loop we are always creating new_row using the last row appended to row
+        #  To find new_row, add index of j (incremented per loop) to index of j + 1 index, if no index is found
+        #  this means we've reached the end of the previous row, so we append just index j.
         for j in range(len(row[-1])):
             try:
                 new_row.append(row[-1][j] + row[-1][j+1])
