@@ -28,11 +28,13 @@ def pascals_triangle(num_rows):
         row.append(new_row)
         new_row = [1]
     
+    #  To print each row, loop through row and print row i, where i is centered in the middle of the length of the final row's
+    #  character length (found by using the str function to convert row's final row to a string).
     for i in range(len(row)):
-        print(str(row[i]).center(len(row[-1])))
-        
+        print(str(row[i]).center(len(str(row[-1]))))
+
     return None
 
 
 number_rows = input("Please enter a number between 1 and 30 for how many rows to calculate Pascal's Triangle:\n")
-print(pascals_triangle(int(number_rows)))
+pascals_triangle(int(number_rows))
