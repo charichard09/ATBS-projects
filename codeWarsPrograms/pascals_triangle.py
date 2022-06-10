@@ -28,7 +28,10 @@ def pascals_triangle(num_rows):
         row.append(new_row)
         new_row = [1]
     
-    return row
+    for i in range(len(row)):
+        print(str(row[i]).center(len(row[-1])))
+        
+    return None
 
 
 number_rows = input("Please enter a number between 1 and 30 for how many rows to calculate Pascal's Triangle:\n")
