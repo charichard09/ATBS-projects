@@ -10,6 +10,12 @@
 #  and incorrect comparison. 
 #  Proposal: Look up and implement the ability to pass command line arguments directly into arguments for 
 #  structure_compare function. 
+#  Patch 1.2 Date 7/12/22: Learned about ast.literal_eval function that will evaluate a string to its literal type 
+#  depending on it's syntax. I can use this on input to take the string and convert it into the correct type.
+#  note: ast.literal_eval has its limits and should be studied more, but serves it purpose in this context.
+
+# import Abstract Syntax Trees module to allow use of the ast.literal_eval function
+import ast 
 
 def structure_compare(original, new_arg):
     if isinstance(original, list) and isinstance(new_arg, list) and len(original) == len(new_arg):
@@ -24,7 +30,7 @@ def structure_compare(original, new_arg):
         return bool(False)
 
 
-original_struc =input("Please enter the original argument: \n"
-new_arg_struc = input("Please enter the new argument to compare against the original argument: \n")
+original_struc = ast.literal_eval(input("Please enter the original argument: \n"))
+new_arg_struc = ast.literal_eval(input("Please enter the new argument to compare against the original argument: \n"))
 
 print(f"\nIt is {structure_compare(original_struc, new_arg_struc)} that the original argument and new argument are equal.")
