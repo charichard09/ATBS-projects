@@ -20,7 +20,6 @@ import ast
 def structure_compare(original, new_arg):
     if isinstance(original, list) and isinstance(new_arg, list) and len(original) == len(new_arg):
         for original_index, new_arg_index in zip(original, new_arg):
-            print(original_index + ' ' + new_arg_index)
             if type(original_index) == type(new_arg_index):
                 continue
             else:
