@@ -4,6 +4,7 @@
 #  occupied positions are marked with a 'W'
 
 def path_finder(maze):
+    position = maze[0][0]
     return
 
 
@@ -16,3 +17,16 @@ test = "\n".join([
           "...W."])
 
 print(f"Path to the end is {bool(path_finder(test))}")
+
+#  Other tests
+#test = "\n".join([
+#          ".W...",
+#          ".W...",
+#          ".W.W.",
+#          "...WW",
+#          "...W."])
+#
+#test = "\n".join([
+#          "..W",
+#          ".W.",
+#          "W.."])
