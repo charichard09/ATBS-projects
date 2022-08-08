@@ -4,7 +4,19 @@
 #  occupied positions are marked with a 'W'
 
 def path_finder(maze):
-    position = maze[0][0]
+    #  Use split function to split string of maze into a single list of individual rows of maze and assign to maze_split
+    maze_split = maze.split("\n")
+
+    #  Assign first position in maze and finish line in maze
+    #  TODO: start and end value will will always be '.', I need to find a way to save start and ends index position
+    #  rather than the value.
+    position = maze_split[0][0]
+    finish_line = maze_split[-1][-1]
+
+    #  Hypothesis: From position [0][0], use a loop to check each cardinal direction position, if True, continue, if false
+    #  eliminate that possibility. If all return False, no path is found, if position == [N-1][N-1], return True.
+    
+
     return
 
 
