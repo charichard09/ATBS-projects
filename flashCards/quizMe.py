@@ -32,8 +32,11 @@ def quiz_me():
     # 8-28-22: Add ability to have answers with newline characters for better readability and multiple answers.
     # Problem 8-28-22: On line 39 ...r"!A\.\s.*\n\n?", re.DOTALL) was still being greedy and assigning all answers to 
     # answers_match[0] instead of answer in first question to answers_match[0] and so on
-    # Solution 8-29-222: With more understanding of the use of ? special character and the difference between "spam?"
-    # and *?, "!A\.\s.*\n\n?" 
+    # Solution 8-29-222: With more understanding of the use of '?' special character and its use in "spam?"
+    # and "*?" in regular expressions, the regular expression ...r"!A\.\s.*\n\n?", re.DOTALL) was allowing .* to ignore
+    # all \n characters with no ? limiter thus greedily including everything until the final \n\n?
+    # By moving the ? after * we limit the regex to find only the first instance of !A\.\s.*?\n\n
+       
     quest_ans_regex = re.compile(r"Questions\son\s" + user_topic + r".*?!END", re.DOTALL)
     quest_ans_mo = quest_ans_regex.search(read_to_dict_text)
 
