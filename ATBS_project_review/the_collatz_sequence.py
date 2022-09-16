@@ -4,13 +4,16 @@
 #  until reaching the final number 1.
 
 def collatz(number):
-    while number != 1:
-        if number % 2 == 0:
-            number = number // 2
-            print(number)
-        elif number % 2 != 0:
-            number = 3 * number + 1
-            print(number)
+    try:
+        number = int(number)
+        while number != 1:
+            if number % 2 == 0:
+                number = number // 2
+                print(number)
+            elif number % 2 != 0:
+                number = 3 * number + 1
+                print(number)
+    except ValueError:
+        collatz(input("The value input is not an integer, please try again:"))
 
-
-collatz(int(input("Please enter any integer: \n")))
+collatz(input("Please enter any integer: \n"))
