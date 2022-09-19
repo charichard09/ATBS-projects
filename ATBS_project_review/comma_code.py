@@ -12,6 +12,8 @@ def comma_code(list_to_split):
     elif len(list_to_split) > 2:
         for i in range(len(list_to_split) - 1):
             string_of_items += list_to_split[i] + ", "
+    else:
+        string_of_items = list_to_split[0]
     
     if len(list_to_split) > 1:
         string_of_items = string_of_items + "and " + list_to_split[-1]
