@@ -3,7 +3,7 @@
 
 import os, sys
 
-for dir_path, dir_name, file_name in os.walk(os.path.dirname(sys.argv[0]) + "/text2Search"):
+for dir_path, dir_name, file_name in os.walk(os.path.dirname(sys.argv[0]) + "/text2Search", topdown=False):
     print("This folder " + dir_path + " contains files:\n" + '\n'.join(file_name))
     if len(file_name) == 0:
         print("None found\n")
