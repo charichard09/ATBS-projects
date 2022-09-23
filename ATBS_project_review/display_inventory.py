@@ -5,11 +5,11 @@
 def display_inventory(inventory):
     total = 0
     print("Inventory:\n")
-    for inventory_item in list(inventory.items()):
+    for inventory_item in inventory.items():
         name, amount = inventory_item
         print(f"{amount} {name}")
         total += amount
-    print("Total number of items: {total}")
+    print(f"Total number of items: {total}")
 
 stuff = {"rope": 1, "torch": 6, "gold coin": 42, "dagger": 1, "arrow": 12}
 
