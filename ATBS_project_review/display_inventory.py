@@ -3,6 +3,8 @@
 #  Write a second function that will take another inventory as "loot" and add it to the "inventory".
 #  Date: 09-23-22  Dev: Richard Cha
 
+from random import randint
+
 def display_inventory(inventory):
     total = 0
 
@@ -21,10 +23,10 @@ def add_to_inventory(inventory, loot):
     for drop_item in loot.items():
         name, amount = drop_item
         if name in inventory:
-            inventory[name] = inventory[name] + amount
+            inventory[name] = inventory[name] + randint(0, amount)
         else:
             #  Could also do inventory[name] = amount
-            inventory.setdefault(name, amount)
+            inventory.setdefault(name, randint(0, amount))
     
     display_inventory(inventory)
 
